@@ -1,0 +1,85 @@
+﻿@model TASEF.Models.ExcelModelView
+@using TASEF.Models
+@{
+    ViewBag.Title = "Détails Périodes";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+    
+}
+
+<div>
+    <h2>Détails Périodes</h2>
+     
+
+    <table id="infoTable">
+        <tr>
+            <td>
+                <label>Entreprise sélectionnée :</label> @gs.nomEtPrenomRaisonSociale &emsp;&emsp;
+            </td>
+            <td>
+                <label>Exercice :</label>  @gs.exercice &emsp;&emsp;
+            </td>
+            <td>
+                <label>Date début exercice :</label>  @gs.dateDebutExercice.ToShortDateString() &emsp;&emsp;
+            </td>
+            <td>
+                <label>Date clotûre exercice :</label> @gs.dateClotureExercice.ToShortDateString() &emsp;&emsp;
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.firstfile)
+    @Html.HiddenFor(model => model.secondfile)
+    @Html.HiddenFor(model => model.matricule)
+    @Html.HiddenFor(model => model.exercice)
+    @Html.HiddenFor(model => model.ownerId)
+    <dl class="dl-horizontal" id="particulier">
+        <dt id="L" style="width: 240px;">
+
+            @Html.DisplayNameFor(model => model.firstPeriodStart)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.firstPeriodStart)
+        </dd>
+        <dt id="L" style="width: 240px;">
+
+            @Html.DisplayNameFor(model => model.firstPeriodEnd)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.firstPeriodEnd)
+        </dd>
+        <dt id="L" style="width: 240px;">
+
+            @Html.DisplayNameFor(model => model.secondPeriodStart)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.secondPeriodStart)
+        </dd>
+        <dt id="L" style="width: 240px;">
+
+            @Html.DisplayNameFor(model => model.secondPeriodEnd)
+        </dt>
+
+        <dd>
+
+            @Html.DisplayFor(model => model.secondPeriodEnd)
+
+
+        </dd>
+
+    </dl>
+
+
+    @Html.ActionLink("Modifier", "EditPeriodes",null, new { @class= "btn btn-default" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Gill Sans','lucida grande', helvetica, arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin: 0px;
+        }
+
+        td, th {
+            padding: 8px;
+        }
+
+        thead {
+            display: table-row-group;
+        }
+
+        tr {
+            page-break-inside: avoid;
+        }
+
+        
+        .table2 {
+            float: right;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+        }
+        .table2 td, th {
+            padding : 0px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h2>@ViewBag.Title</h2>
+    <table class="table2">
+        <tr>
+            <td><label>Nom société :</label></td>
+            <td>&emsp; @ViewBag.info1</td>
+        </tr>
+        <tr>
+            <td><label>Adresse :</label></td>
+            <td>&emsp; @ViewBag.info2</td>
+        </tr>
+        <tr>
+            <td><label>Activité :</label></td></td>
+            <td>&emsp; @ViewBag.info3</td>
+        </tr>
+        <tr>
+            <td><label>Date début exercice :</label></td>
+            <td>&emsp; @ViewBag.info4.ToString("dd/MM/yyyy")</td>
+        </tr>
+        <tr>
+            <td><label>Date cloture exercice :</label></td>
+            <td>&emsp; @ViewBag.info5.ToString("dd/MM/yyyy")</td>
+        </tr>
+    </table>
+    @RenderBody()
+</body>
+</html>

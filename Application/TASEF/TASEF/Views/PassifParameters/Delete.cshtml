@@ -1,0 +1,56 @@
+﻿@model TASEF.Models.PassifFormula
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Confirmer la suppression!</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codeParam)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codeParam)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codeDonnee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codeDonnee)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomCompte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomCompte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.typeFormule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeFormule)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour", "Index", null, new { id = "brownLink" })
+        </div>
+    }
+</div>

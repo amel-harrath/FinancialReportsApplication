@@ -1,0 +1,82 @@
+﻿@model TASEF.Models.generalSettings
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Supprimer</h2>
+
+<h3>Confirmer la suppression!</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomEtPrenomRaisonSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomEtPrenomRaisonSociale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activite)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateDebutExercice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDebutExercice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateClotureExercice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateClotureExercice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.actededepot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actededepot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.natureDepot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.natureDepot)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

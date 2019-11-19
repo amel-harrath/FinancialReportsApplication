@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TASEF.Models.generalSettings>
+
+@{
+    ViewBag.Title = "Liste des entreprise";
+}
+
+<h2>Liste des entreprise</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.matricule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomEtPrenomRaisonSociale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exercice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateDebutExercice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateClotureExercice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.actededepot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.natureDepot)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.matricule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomEtPrenomRaisonSociale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exercice)
+        </td>
+        <td>
+            @item.dateDebutExercice.ToString("D")
+        </td>
+        <td>
+            @item.dateClotureExercice.ToString("D")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.actededepot)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.natureDepot)
+        </td>
+        <td>
+            @Html.ActionLink("Séléctionner", "SelectCompany", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice })
+
+        </td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "Notes";
+}
+
+<h2>Génération des notes</h2>
+<div id="wrapper">
+    <div id="centerDiv">
+        @Html.ActionLink("Générer le fichier .pdf", "PrintResultatFiscalNotesAsPdf", "ResultatFiscalParameters", null, new { @class = "btn btn-default" })
+    </div>
+</div>

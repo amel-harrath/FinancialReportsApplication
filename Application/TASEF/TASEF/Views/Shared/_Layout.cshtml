@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dghaies Ahmed,Harrath Amel">
+    <link rel="shortcut icon" href="http://www.tastunisia.com/wp-content/uploads/2018/03/TAS-logo-Copie-Copie.png" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("style",required: false)
+
+</head>
+<body style="background: #F5F5DC; ">
+    <div class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <a class="navbar-brand" href="#"><img alt="logo" src="http://www.tastunisia.com/wp-content/uploads/2018/03/TAS-logo-Copie-Copie.png" height="30" width="50" /></a>
+            @Html.ActionLink("Etats financiers", "Documentation", "Excel", new { area = "" }, new { @class = "navbar-brand" })
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Entreprise
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Tous les entreprises", "Index", "Home")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Entreprise sélectionnée", "Success", "Excel")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Paramètres
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Actifs", "Index", "Parameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Passifs", "Index", "PassifParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Résultat", "Index", "EtatDeResultatParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown dropdown-submenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Flux de trésorerie
+
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        @Html.ActionLink("Modèle de référence", "Index", "FluxTresorerieMRParameters")
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        @Html.ActionLink("Modèle autorisé", "Index", "FluxTresorerieMAParameters")
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Résultat Fiscal", "Index", "ResultatFiscalParameters")
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Traitement
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Modifier les périodes", "DetailsPeriodes", "Excel")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Journal RAN", "RAN", "Excel")
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Génération des fichiers
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Actifs", "GenerateFiles", "Parameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Passifs", "GenerateFiles", "PassifParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Résultat", "GenerateFiles", "EtatDeResultatParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown dropdown-submenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Flux de trésorerie
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        @Html.ActionLink("Modèle de référence", "GenerateFiles", "FluxTresorerieMRParameters")
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        @Html.ActionLink("Modèle autorisé", "GenerateFiles", "FluxTresorerieMAParameters")
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Résultat Fiscal", "GenerateFiles", "ResultatFiscalParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Notes aux actifs", "GenerateNoteFiles", "Parameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Notes aux passifs", "GenerateNoteFiles", "PassifParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Notes à l'état de résultat", "GenerateNoteFiles", "EtatDeResultatParameters")
+                            </li>
+                            <li class="divider"></li>
+                            <li class="dropdown dropdown-submenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    Notes au flux de trésorerie
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        @Html.ActionLink("Modèle de référence", "GenerateNoteFiles", "FluxTresorerieMRParameters")
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        @Html.ActionLink("Modèle autorisé", "GenerateNoteFiles", "FluxTresorerieMAParameters")
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                @Html.ActionLink("Notes au Résultat Fiscal", "GenerateNoteFiles", "ResultatFiscalParameters")
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - TAS - Etats financiers </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    $(this).parent().siblings().removeClass('open');
+                    $(this).parent().toggleClass('open');
+                });
+            });
+        })(jQuery);
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,687 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D312DE7B-838D-4F51-86B1-49ED47754E64}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TASEF</RootNamespace>
+    <AssemblyName>TASEF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\Microsoft\ADL Tools\2.3.3000.2\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.5.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.5.1\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.5.1\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.5.1\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.5.1\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EtatDeResultatParametersController.cs" />
+    <Compile Include="Controllers\ExcelController.cs" />
+    <Compile Include="Controllers\FluxTresorerieMAParametersController.cs" />
+    <Compile Include="Controllers\FluxTresorerieMRParametersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParametersController.cs" />
+    <Compile Include="Controllers\PassifParametersController.cs" />
+    <Compile Include="Controllers\ResultatFiscalParametersController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\IdentityExtensions.cs" />
+    <Compile Include="Infrastructure\ExcelProjectContext.cs" />
+    <Compile Include="Migrations\201806151213291_init.cs" />
+    <Compile Include="Migrations\201806151213291_init.Designer.cs">
+      <DependentUpon>201806151213291_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806151329316_FirstName.cs" />
+    <Compile Include="Migrations\201806151329316_FirstName.Designer.cs">
+      <DependentUpon>201806151329316_FirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806151451159_newTable.cs" />
+    <Compile Include="Migrations\201806151451159_newTable.Designer.cs">
+      <DependentUpon>201806151451159_newTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806180740183_OwnerIdProp.cs" />
+    <Compile Include="Migrations\201806180740183_OwnerIdProp.Designer.cs">
+      <DependentUpon>201806180740183_OwnerIdProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201806192328168_updateAll.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201806192328168_updateAll.Designer.cs">
+      <DependentUpon>201806192328168_updateAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806180806179_OwnerIdMigrations.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806180806179_OwnerIdMigrations.Designer.cs">
+      <DependentUpon>201806180806179_OwnerIdMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806181447309_ExcelModelViewMigrations.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806181447309_ExcelModelViewMigrations.Designer.cs">
+      <DependentUpon>201806181447309_ExcelModelViewMigrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806181500307_hasParameters.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806181500307_hasParameters.Designer.cs">
+      <DependentUpon>201806181500307_hasParameters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806181815021_addingIds.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806181815021_addingIds.Designer.cs">
+      <DependentUpon>201806181815021_addingIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806190521376_ActifParam.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806190521376_ActifParam.Designer.cs">
+      <DependentUpon>201806190521376_ActifParam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806190544413_ActifParam1.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806190544413_ActifParam1.Designer.cs">
+      <DependentUpon>201806190544413_ActifParam1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806191456283_Passif.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806191456283_Passif.Designer.cs">
+      <DependentUpon>201806191456283_Passif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806201618475_State.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806201618475_State.Designer.cs">
+      <DependentUpon>201806201618475_State.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806201731092_statePassif.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806201731092_statePassif.Designer.cs">
+      <DependentUpon>201806201731092_statePassif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806201800066_stateEDR.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806201800066_stateEDR.Designer.cs">
+      <DependentUpon>201806201800066_stateEDR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806201835211_etatdeFlux.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806201835211_etatdeFlux.Designer.cs">
+      <DependentUpon>201806201835211_etatdeFlux.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806201901316_RF.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806201901316_RF.Designer.cs">
+      <DependentUpon>201806201901316_RF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806210140443_ownerIdAsKey.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806210140443_ownerIdAsKey.Designer.cs">
+      <DependentUpon>201806210140443_ownerIdAsKey.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806210434100_AddedOwnerIdEverywhere.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806210434100_AddedOwnerIdEverywhere.Designer.cs">
+      <DependentUpon>201806210434100_AddedOwnerIdEverywhere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806231955537_AddParamSettingModel.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806231955537_AddParamSettingModel.Designer.cs">
+      <DependentUpon>201806231955537_AddParamSettingModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806231958321_deleteHasParametersAttribute.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806231958321_deleteHasParametersAttribute.Designer.cs">
+      <DependentUpon>201806231958321_deleteHasParametersAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806260830585_RAN.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806260830585_RAN.Designer.cs">
+      <DependentUpon>201806260830585_RAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201806261845203_fromIntToFloat.cs" />
+    <Compile Include="Migrations\OtherDbContext\201806261845203_fromIntToFloat.Designer.cs">
+      <DependentUpon>201806261845203_fromIntToFloat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807030351312_DefinedFormulas.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807030351312_DefinedFormulas.Designer.cs">
+      <DependentUpon>201807030351312_DefinedFormulas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807030354516_delete.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807030354516_delete.Designer.cs">
+      <DependentUpon>201807030354516_delete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807030419487_testing.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807030419487_testing.Designer.cs">
+      <DependentUpon>201807030419487_testing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807030504274_journalRAN.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807030504274_journalRAN.Designer.cs">
+      <DependentUpon>201807030504274_journalRAN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807041000412_priority.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807041000412_priority.Designer.cs">
+      <DependentUpon>201807041000412_priority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\201807101814310_AddingDefinedFormulaTable.cs" />
+    <Compile Include="Migrations\OtherDbContext\201807101814310_AddingDefinedFormulaTable.Designer.cs">
+      <DependentUpon>201807101814310_AddingDefinedFormulaTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\OtherDbContext\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ActifFormula.cs" />
+    <Compile Include="Models\actifFormulaViewModel.cs" />
+    <Compile Include="Models\ActifParamModel.cs" />
+    <Compile Include="Models\EtatDeResultatFormula.cs" />
+    <Compile Include="Models\EtatDeResultatParamModel.cs" />
+    <Compile Include="Models\ExcelInfo.cs" />
+    <Compile Include="Models\ExcelModelView.cs" />
+    <Compile Include="Models\FluxTresorerieMAFormula.cs" />
+    <Compile Include="Models\FluxTresorerieMAParamModel.cs" />
+    <Compile Include="Models\FluxTresorerieMRFormula.cs" />
+    <Compile Include="Models\FluxTresorerieMRParamModel.cs" />
+    <Compile Include="Models\Formula.cs" />
+    <Compile Include="Models\generalSettings.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ParametersSetting.cs" />
+    <Compile Include="Models\PassifFormula.cs" />
+    <Compile Include="Models\PassifParamModel.cs" />
+    <Compile Include="Models\RANViewModel.cs" />
+    <Compile Include="Models\ResultatFiscalFormula.cs" />
+    <Compile Include="Models\ResultatFiscalParamModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\doc.css" />
+    <Content Include="Content\Doc\Actif-parameters.JPG" />
+    <Content Include="Content\Doc\Actif-pdf.JPG" />
+    <Content Include="Content\Doc\add-company-information.JPG" />
+    <Content Include="Content\Doc\add-files.JPG" />
+    <Content Include="Content\Doc\add-formula.JPG" />
+    <Content Include="Content\Doc\add-new-company.JPG" />
+    <Content Include="Content\Doc\calculated-values-after-add.JPG" />
+    <Content Include="Content\Doc\calculated-values.JPG" />
+    <Content Include="Content\Doc\companies.JPG" />
+    <Content Include="Content\Doc\company-details.JPG" />
+    <Content Include="Content\Doc\company-list.JPG" />
+    <Content Include="Content\Doc\edit-periods.JPG" />
+    <Content Include="Content\Doc\empty-values.JPG" />
+    <Content Include="Content\Doc\existing-formula.JPG" />
+    <Content Include="Content\Doc\file-content-view.JPG" />
+    <Content Include="Content\Doc\file-content.JPG" />
+    <Content Include="Content\Doc\generate-files.JPG" />
+    <Content Include="Content\Doc\journal-ran.JPG" />
+    <Content Include="Content\Doc\Login&amp;register.JPG" />
+    <Content Include="Content\Doc\login.JPG" />
+    <Content Include="Content\Doc\logoff.JPG" />
+    <Content Include="Content\Doc\modifier-journal-ran.JPG" />
+    <Content Include="Content\Doc\note-pdf.JPG" />
+    <Content Include="Content\Doc\parameter.JPG" />
+    <Content Include="Content\Doc\parameters-setting.JPG" />
+    <Content Include="Content\Doc\pdf.JPG" />
+    <Content Include="Content\Doc\register.JPG" />
+    <Content Include="Content\Doc\select-company.JPG" />
+    <Content Include="Content\Doc\selected-company.JPG" />
+    <Content Include="Content\Doc\view-periods.JPG" />
+    <Content Include="Content\Doc\working-periods.JPG" />
+    <Content Include="Content\Doc\xmlfile.JPG" />
+    <Content Include="Content\TAS-logo.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Browsers\qt.browser" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\FluxTresorerieMAParameters\Show.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\Create.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\Delete.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\Index.cshtml" />
+    <Content Include="Views\Excel\DetailsPeriodes.cshtml" />
+    <Content Include="Views\Excel\Documentation.cshtml" />
+    <Content Include="Views\Excel\EditPeriodes.cshtml" />
+    <Content Include="Views\Excel\FileError.cshtml" />
+    <Content Include="Views\Excel\Index.cshtml" />
+    <Content Include="Views\Excel\Input.cshtml" />
+    <Content Include="Views\Excel\Success.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\Create.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\Delete.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\Index.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\Create.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\Delete.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\Index.cshtml" />
+    <Content Include="Views\Parameters\ActifsAsPdf.cshtml" />
+    <Content Include="Views\Parameters\Create.cshtml" />
+    <Content Include="Views\Parameters\Index.cshtml" />
+    <Content Include="Views\PassifParameters\PassifsAsPdf.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\Create.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\Delete.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Shared\FileError.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Parameters\EditParam.cshtml" />
+    <Content Include="Views\Parameters\EditFormula.cshtml" />
+    <Content Include="Views\Parameters\Delete.cshtml" />
+    <Content Include="Views\PassifParameters\Create.cshtml" />
+    <Content Include="Views\PassifParameters\Delete.cshtml" />
+    <Content Include="Views\PassifParameters\EditFormula.cshtml" />
+    <Content Include="Views\PassifParameters\EditParam.cshtml" />
+    <Content Include="Views\PassifParameters\Index.cshtml" />
+    <Content Include="Views\PassifParameters\Show.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\EditFormula.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\EditParam.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\EtatDeResultatsAsPdf.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\Show.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\EditFormula.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\EditParam.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\FluxTresorerieMRsAsPdf.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\Show.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\FluxTresorerieMAsAsPdf.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\EditParam.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\EditFormula.cshtml" />
+    <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\Show.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\EditParam.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\EditFormula.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\ResultatFiscalAsPdf.cshtml" />
+    <Content Include="Views\Parameters\GenerateFiles.cshtml" />
+    <Content Include="Views\Parameters\Show.cshtml" />
+    <Content Include="Views\Shared\_pdfLayout.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\GenerateFiles.cshtml" />
+    <Content Include="Views\PassifParameters\GenerateFiles.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\GenerateFiles.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\GenerateFiles.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\GenerateFiles.cshtml" />
+    <Content Include="Views\Excel\NewFiles.cshtml" />
+    <Content Include="Views\Shared\CompaniesList.cshtml" />
+    <Content Include="Views\Shared\ParamSetting.cshtml" />
+    <Content Include="Views\Parameters\GenerateNoteFiles.cshtml" />
+    <Content Include="Views\Parameters\ActifNotesAsPdf.cshtml" />
+    <Content Include="Views\Excel\RAN.cshtml" />
+    <Content Include="Views\Home\try2.cshtml" />
+    <Content Include="Views\PassifParameters\GenerateNoteFiles.cshtml" />
+    <Content Include="Views\PassifParameters\PassifNotesAsPdf.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\EtatDeResultatNotesAsPdf.cshtml" />
+    <Content Include="Views\EtatDeResultatParameters\GenerateNoteFiles.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\FluxTresorerieMRNotesAsPdf.cshtml" />
+    <Content Include="Views\FluxTresorerieMRParameters\GenerateNoteFiles.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\ResultatFiscalNotesAsPdf.cshtml" />
+    <Content Include="Views\ResultatFiscalParameters\GenerateNoteFiles.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\FluxTresorerieMANotesAsPdf.cshtml" />
+    <Content Include="Views\FluxTresorerieMAParameters\GenerateNoteFiles.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201806151213291_init.resx">
+      <DependentUpon>201806151213291_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806151329316_FirstName.resx">
+      <DependentUpon>201806151329316_FirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806151451159_newTable.resx">
+      <DependentUpon>201806151451159_newTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806180740183_OwnerIdProp.resx">
+      <DependentUpon>201806180740183_OwnerIdProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201806192328168_updateAll.resx">
+      <DependentUpon>201806192328168_updateAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806180806179_OwnerIdMigrations.resx">
+      <DependentUpon>201806180806179_OwnerIdMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806181447309_ExcelModelViewMigrations.resx">
+      <DependentUpon>201806181447309_ExcelModelViewMigrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806181500307_hasParameters.resx">
+      <DependentUpon>201806181500307_hasParameters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806181815021_addingIds.resx">
+      <DependentUpon>201806181815021_addingIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806190521376_ActifParam.resx">
+      <DependentUpon>201806190521376_ActifParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806190544413_ActifParam1.resx">
+      <DependentUpon>201806190544413_ActifParam1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806191456283_Passif.resx">
+      <DependentUpon>201806191456283_Passif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806201618475_State.resx">
+      <DependentUpon>201806201618475_State.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806201731092_statePassif.resx">
+      <DependentUpon>201806201731092_statePassif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806201800066_stateEDR.resx">
+      <DependentUpon>201806201800066_stateEDR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806201835211_etatdeFlux.resx">
+      <DependentUpon>201806201835211_etatdeFlux.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806201901316_RF.resx">
+      <DependentUpon>201806201901316_RF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806210140443_ownerIdAsKey.resx">
+      <DependentUpon>201806210140443_ownerIdAsKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806210434100_AddedOwnerIdEverywhere.resx">
+      <DependentUpon>201806210434100_AddedOwnerIdEverywhere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806231955537_AddParamSettingModel.resx">
+      <DependentUpon>201806231955537_AddParamSettingModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806231958321_deleteHasParametersAttribute.resx">
+      <DependentUpon>201806231958321_deleteHasParametersAttribute.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806260830585_RAN.resx">
+      <DependentUpon>201806260830585_RAN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201806261845203_fromIntToFloat.resx">
+      <DependentUpon>201806261845203_fromIntToFloat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807030351312_DefinedFormulas.resx">
+      <DependentUpon>201807030351312_DefinedFormulas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807030354516_delete.resx">
+      <DependentUpon>201807030354516_delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807030419487_testing.resx">
+      <DependentUpon>201807030419487_testing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807030504274_journalRAN.resx">
+      <DependentUpon>201807030504274_journalRAN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807041000412_priority.resx">
+      <DependentUpon>201807041000412_priority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\OtherDbContext\201807101814310_AddingDefinedFormulaTable.resx">
+      <DependentUpon>201807101814310_AddingDefinedFormulaTable.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49919</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49999/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

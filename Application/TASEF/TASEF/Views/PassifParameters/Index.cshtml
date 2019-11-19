@@ -1,0 +1,81 @@
+﻿@model IEnumerable<TASEF.Models.PassifParamModel>
+@using TASEF.Models;
+@{
+    ViewBag.Title = "Passif";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+    string value = "class=dd";
+}
+
+<div>
+    <h2>Passif</h2>
+
+
+    <table id="infoTable">
+        <tr>
+            <td>
+                <label>Entreprise sélectionnée :</label> @gs.nomEtPrenomRaisonSociale &emsp;&emsp;
+            </td>
+            <td>
+                <label>Exercice :</label>  @gs.exercice &emsp;&emsp;
+            </td>
+            <td>
+                <label>Date début exercice :</label>  @gs.dateDebutExercice.ToShortDateString() &emsp;&emsp;
+            </td>
+            <td>
+                <label>Date clotûre exercice :</label> @gs.dateClotureExercice.ToShortDateString() &emsp;&emsp;
+            </td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Recalculer", "Recalculate", null, new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN1)
+        </th>
+        <th id="parameterLinks"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr  @{if (item.type.Equals("Formula")) { @value  }}>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN1)
+            </td>
+            <td>
+                @{
+                    if (item.type.Equals("Calculated"))
+                    {
+                        @Html.ActionLink("Ajouter formule", "Create", new { id = item.code })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Détails", "Show", new { id = item.code })
+                    }
+                } |
+                @Html.ActionLink("Modifier les valeurs", "EditParam", new { ownerId=item.ownerId,code = item.code,exercice = item.exercice,matricule = item.matricule })
+            </td>
+        </tr>
+    }
+
+</table>

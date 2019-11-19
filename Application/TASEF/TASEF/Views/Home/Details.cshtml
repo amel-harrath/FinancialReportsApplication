@@ -1,0 +1,91 @@
+﻿@model TASEF.Models.generalSettings
+
+@{
+    ViewBag.Title = "Détails entreprise";
+    string action = ViewBag.action;
+    string controller = ViewBag.controller;
+}
+
+<h2>Entreprise</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.matricule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matricule)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.nomEtPrenomRaisonSociale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomEtPrenomRaisonSociale)
+        </dd>
+          <dt id="L">
+           - @Html.DisplayNameFor(model => model.exercice)
+        </dt>
+
+        <dd >
+            @Html.DisplayFor(model => model.exercice)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.activite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activite)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adresse)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.dateDebutExercice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateDebutExercice)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.dateClotureExercice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateClotureExercice)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.actededepot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.actededepot)
+        </dd>
+
+        <dt id="L">
+            - @Html.DisplayNameFor(model => model.natureDepot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.natureDepot)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { ownerId= Model.ownerId, matricule = Model.matricule, exercice = Model.exercice }, new { id="brownLink"}) |
+    @Html.ActionLink("Retour", action,controller,null, new { id = "brownLink" })
+</p>

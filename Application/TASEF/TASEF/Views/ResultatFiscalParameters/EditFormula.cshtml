@@ -1,0 +1,77 @@
+﻿@model TASEF.Models.ResultatFiscalFormula
+
+@{
+    ViewBag.Title = "Modifier formule";
+}
+
+<h2>Modification de formule</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Formule</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        @Html.HiddenFor(model => model.exercice)
+
+        @Html.HiddenFor(model => model.matricule)
+        @Html.HiddenFor(model => model.ownerId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeParam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeParam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codeParam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeDonnee, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeDonnee, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codeDonnee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomCompte, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomCompte, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomCompte, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typeFormule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("typeFormule", new List<SelectListItem>
+                            { new SelectListItem { Text = "Solde", Value = "Solde", Selected=true},
+                              new SelectListItem { Text = "Mouvement Débiteur", Value = "MvtDebit"},
+                              new SelectListItem { Text = "Mouvement Créditeur", Value = "MvtCredit"},
+                              new SelectListItem { Text = "Solde Si Débiteur", Value = "SoldeSiD"},
+                              new SelectListItem { Text = "Solde Si Créditeur", Value = "SoldeSiC"}
+                              }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.typeFormule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retour", "Index", null, new { id = "brownLink" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

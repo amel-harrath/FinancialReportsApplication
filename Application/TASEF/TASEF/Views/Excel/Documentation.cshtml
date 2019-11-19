@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Documentation";
+}
+
+<h2>Documentation</h2>
+
+<p>
+    Cette application générera automatiquement des états financiers et des impôts Liasse à partir d'un compte grand livre. <br />
+    La documentation suivante vous guidera à travers l'utilisation et la compréhension des fonctionnalités de cette application.
+</p>
+<h4 style="color:blue">Authentification</h4>
+<p>
+    Pour utiliser cette application vous devez avoir un compte,<br />
+    <img alt="register-login" src="~/Content/Doc/Login&register.jpg" height="60" id="R-L" /><br />
+    Vous devez s'inscrire avec votre adresse mail et une mot de passe valide. Le mot de passe doit avoir au moins 6 caractères, un caractère non lettre et non chiffre, un chiffre ('0' - '9') et une majuscule ('A' - 'Z').
+</p>
+<div>
+    <img alt="Register" src="~/Content/Doc/register.jpg" height="30%" width="45%" />
+    <img alt="Login" src="~/Content/Doc/login.jpg" height="30%" width="45%" />
+</div>
+<h4 style="color:blue">Configuration des informations de l'entreprise et l'importation des fichiers</h4>
+<p>
+    Aprés la création de votre compte, dirigez-vous vers le menu "Entreprise" dans la bare de menus et cliquer sur "Tous les entreprises". <br />
+    <img alt="register-login" src="~/Content/Doc/companies.jpg" height="120px" id="R-L" /><br /><br />
+    Si c'est votre première connexion à l'application, vous trouverez une page vide avec le bouton "Ajouter une nouvelle société"<br /><br />
+    <img alt="add-company" src="~/Content/Doc/add-new-company.jpg" width="100%" /><br /><br />
+    En cliquant sur ce bouton, vous allez être redirigé vers un formulaire que vous devez remplir avec les informations de votre entreprise
+    <br /><br />
+    <img alt="company-information" src="~/Content/Doc/add-company-information.jpg" /><br />
+    Soumettez ce formulaire et vous serez redirigé vers un autre pour saisir les périodes et importer les fichiers de votre entreprise<br />
+    <img alt="add-files" src="~/Content/Doc/add-files.jpg " /><br />
+    <strong>Remarque:</strong> Les périodes sont remplies par des valeurs par défaut. La deuxième période qui est N, c'est la même période que celle que vous avez définie dans le formulaire précédent.
+    La première période est la même date mais avec un an plus tôt<br />
+    Voici un exemple des fichiers importés<br /><br />
+    <img alt="files" src="~/Content/Doc/file-content.jpg" /><br /><br />
+    Le contenu du fichier :<br />
+    &emsp;-Colonne N°1: Journal ( Chaîne )<br />
+    &emsp;-Colonne N°2: Numéro de compte ( Entier )<br />
+    &emsp;-Colonne N°3: Date de mouvement ( Date ) <br />
+    &emsp;-Colonne N°4: débit ( Réel ) <br />
+    &emsp;-Colonne N°5: crédit ( Réel ) <br />
+    <strong style="color:red">Attention !!</strong> Les types de données du fichier doivent être respectés, les dates dans le fichier doivent être inclus la période définie pour ce fichier  et le fichier doit être de format excel.<br /><br />
+    Si vous avez déjà enregistré une entreprise avec votre compte, vous pouvez la sélectionner et travailler avec.<br /><br />
+    <img alt="created-companies" src="~/Content/Doc/select-company.jpg" width="100%" /><br /><br />
+    <strong>Remarques: </strong><br />
+    &emsp;-Si l'entreprise sélectionnée n'a pas déjà des fichiers téléchargés, il vous sera demandé de les télécharger.<br />
+    &emsp;-Vous pouvez changer l'entreprise sélectionnée quand vous le souhaitez en accédant à l'onglet "Tous les entreprises" du menu "Entreprise".
+    <br />
+    En créant une nouvelle société ou en sélectionnant une ancienne, vous serez redirigé vers une page contenant les informations que vous avez déjà importées.<br />
+    Si vous avez changé d'entreprise ou oublié ce que vous avez téléchargé, vous pouvez toujours vérifier cet onglet "Entreprise sélectionnée" sous le menu "Entreprise"
+    <br /><br />
+    <img alt="selected Company" src="~/Content/Doc/selected-company.jpg" id="R-L" /><br /><br />
+    La page de l'entreprise séléctionnée <br /><br />
+    <img alt="Selected-Company-View" src="~/Content/Doc/file-content-view.jpg" width="100%" /><br /><br />
+    Dans cette page vous trouverez les détails de l'entreprise.
+    <br /><br />
+    <img alt="Company details" src="~/Content/Doc/company-details.jpg" /><br />
+    <strong>Remarque: </strong> Vous pouvez modifier les informations de l'entreprise ou les fichiers téléchargés.
+</p>
+<br />
+<strong> <span style="color:red"> Attention :</span> Dans le reste de ce tutoriel, les paramètres actifs seront pris comme exemple principal pour vous aider à mieux comprendre. Le reste des paramètres sont configurés de la même manière.</strong>
+
+<h4 style="color:blue">Configuration des paramétres</h4>
+<p>
+    Accédez d'abord au menu "Paramètres" dans la barre de menus. Vous trouverez tous les paramétres.<br />
+    <img alt="parameters dropDownMenu" src="~/Content/Doc/Actif-parameters.jpg" id="R-L" /><br /><br />
+    Si c'est la première fois que vous accédez à un paramètre, il vous sera demandé de choisir si vous souhaitez tout configurer manuellement, récupérer les paramétres d'une autre entreprise ou obtenir les paramétres par defaut. <br /><br />
+    <img alt="parameters setting" src="~/Content/Doc/parameters-setting.jpg" width="100%" /><br /><br />
+    <strong>&emsp; - Paramétres par défaut</strong><br />
+    Si vous choisissez d'obtenir les paramètres par défaut, vous serez redirigé vers le paramètre avec des valeurs vides mais avec des formules bien définies.<br />
+    <img alt="empty values" src="~/Content/Doc/empty-values.jpg" width="100%" /><br />
+    Tout ce que vous devez faire est de cliquer sur le bouton "Recalculer" et les formules seront appliquées sur vos données<br />
+    <img alt="calculated values" src="~/Content/Doc/calculated-values.jpg" width="100%" /><br /><br />
+    <strong>&emsp; - Paramétres récupérés</strong><br />
+    Si vous choisissez de récupérer les paramétres d'une autre entreprise, il vous sera demandé d'abord de choisir une entreprise à partie dequelle vous souhaitez récupérer les paramètres.<br />
+    <img alt="select Company" src="~/Content/Doc/company-list.jpg" width="100%" /><br />
+    Vous serez redirigé vers la page des paramètres actifs, appuyez sur "Recalculer" et tous les paramètres seront appliqués<br /><br />
+    <strong>&emsp; - Paramétres spécifiques</strong><br />
+    Si vous choisissez de configurer vos propres paramétres, aucune formule ne sera définie alors vous pouvez les définir comme vous le souhaitez. <br />
+    <strong>Remarque: </strong> Même si vous obtenez les paramètres par défaut ou les récupérez à partir d'une autre entreprise, vous pouvez toujours ajouter d'autres paramètres ou modifier les existants.<br /><br />
+    <img alt="parameter" src="~/Content/Doc/parameter.jpg" width="100%" /><br /><br />
+    En cliquant sur "Ajouter formule" d'un paramètre désigné, vous serez redirigé vers une page qui contient ses paramètres spécifiques.<br />
+    <img alt="existing-formula" src="~/Content/Doc/existing-formula.jpg" width="100%" /><br />
+    Vous pouvez supprimer ou modifier les formules existantes. Vous pouvez également ajouter votre propre formule.<br />
+    <img alt="add-formula" src="~/Content/Doc/add-formula.jpg" width="100%" />
+    <strong style="color:red">Attention !! </strong> Certains paramètres ne peuvent pas être modifiés, vous n'avez donc accès que pour voir leurs détails. <br /><br />
+</p>
+<h4 style="color:blue">Traitement</h4>
+<p>
+    Le menu traitement contient deux onglets.<br />
+    
+    &emsp; - Modifier les périodes<br />
+    &emsp; - journal RAN<br />
+    <img id="R-L" alt="Traitement" src="~/Content/Doc/working-periods.jpg" /><br />
+    <br />
+    L'onglet "Modifier les périodes" vous permez de vérifier et modifier les périodes que vous avez entrer à l'importation des fichiers.
+    <br />
+    L'onglet "Journal RAN" vous donne la possibilité de définir votre propre journal "Report à nouveau" qui est définis par défaut "RAN". <br />
+    <img alt="journale RAN" src="~/Content/Doc/modifier-journal-ran.jpg" /><br /><br />
+</p>
+<h4 style="color:blue">Génération des fichiers</h4>
+<p>
+    Aprés la configuration des paramétres, vous pouvez accéder au menu "Génération des fichiers".
+   <br />
+    <img alt="Actif Pdf" src="~/Content/Doc/Actif-pdf.jpg" id="R-L" /><br />
+    En choisissant l'une des sous-menu "Actif","Passif","Résultat".. Une page contenant deux boutons sera affichée, pour générer soit le fichier pdf soit le fichier xml.<br />
+    <img alt="generate files" src="~/Content/Doc/generate-files.jpg" /><br />
+     Le fichier pdf sera ouvert sur votre navigateur donc vous pouvez le télécharger.<br /><br />
+    <img alt="Pdf File" src="~/Content/Doc/pdf.jpg" width="100%" /><br /><br />
+    Le fichier xml sera automatiquement télécharger.<br />
+    <img alt="Xml file" src="~/Content/Doc/xmlfile.jpg" id="R-L" /><br /><br />
+    Voici un exemple d'un fichier xml<br /><br />
+    <img alt="Xml file content" src="~/Content/Doc/xmlfile-content.jpg" width="100%" /><br /><br />
+    Pour les notes, seul la génération de fichier pdf est possible et c'est de la même façon qu'expliquée tout d'abord.
+
+</p>

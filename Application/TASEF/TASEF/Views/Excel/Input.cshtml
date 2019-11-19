@@ -1,0 +1,75 @@
+﻿@model TASEF.Models.ExcelModelView
+
+@{
+    ViewBag.Title = "Importation";
+}
+
+<h2>Importation des fichiers</h2>
+
+@using (Html.BeginForm("Import", "Excel", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @ViewBag.firstPeriodError
+    <div class="form-group">
+        @Html.LabelFor(model => model.firstPeriodStart, htmlAttributes: new { @class = "control-label col-md-2", id="L" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.firstPeriodStart, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.fps } })
+            @Html.ValidationMessageFor(model => model.firstPeriodStart, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.firstPeriodEnd, htmlAttributes: new { @class = "control-label col-md-2", id = "L" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.firstPeriodEnd, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.fpe } })
+            @Html.ValidationMessageFor(model => model.firstPeriodEnd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @ViewBag.firstfileError
+    <div class="form-group">
+        @Html.LabelFor(model => model.firstfile, htmlAttributes: new { @class = "control-label col-md-2", id = "L" })
+        <div class="col-md-10">
+            <label class="btn btn-default btn-file">
+                Browse     <input type="file" name="firstfile" accept=".xlsx,.xls" />
+            </label>
+        </div>
+    </div>
+    @ViewBag.secondPeriodError
+    <div class="form-group">
+        @Html.LabelFor(model => model.secondPeriodStart, htmlAttributes: new { @class = "control-label col-md-2", id = "L" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.secondPeriodStart, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.sps } })
+            @Html.ValidationMessageFor(model => model.secondPeriodStart, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.secondPeriodEnd, htmlAttributes: new { @class = "control-label col-md-2", id = "L" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.secondPeriodEnd, new { htmlAttributes = new { @class = "form-control", @Value = @ViewBag.spe } })
+            @Html.ValidationMessageFor(model => model.secondPeriodEnd, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @ViewBag.secondfileError
+    <div class="form-group">
+        @Html.LabelFor(model => model.secondfile, htmlAttributes: new { @class = "control-label col-md-2", id = "L" })
+        <div class="col-md-10">
+            <label class="btn btn-default btn-file">
+                Browse     <input type="file" name="secondfile" accept=".xlsx,.xls" />
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Importer" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+

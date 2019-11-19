@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TASEF.Models.ActifParamModel>
+
+@{
+    ViewBag.Title = "Actifs";
+    Layout = "~/Views/Shared/_pdfLayout.cshtml";
+    string value = "class=dd";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.brutN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.amortProvN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN1)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @{if (item.type.Equals("Formula")) { @value  }}>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brutN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amortProvN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN1)
+            </td>
+        </tr>
+    }
+
+</table>

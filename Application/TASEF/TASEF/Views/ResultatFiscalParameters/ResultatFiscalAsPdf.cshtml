@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TASEF.Models.ResultatFiscalParamModel>
+
+@{
+    ViewBag.Title = "Résultat Fiscal";
+    Layout = "~/Views/Shared/_pdfLayout.cshtml";
+    string value = "class=dd";
+    string value2 = "class=gg";
+    string value3 = "class=bb";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.netN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN1)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @{if (item.type.Equals("Formula"))
+            { @value  }
+                else if (item.type.Equals("Manuel")) { @value2}
+            else if (item.type.Equals("Special")) { @value3}
+            }>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.netN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN1)
+            </td>
+        </tr>
+    }
+
+</table>

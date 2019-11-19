@@ -1,0 +1,99 @@
+@model IEnumerable<TASEF.Models.generalSettings>
+@using TASEF.Models
+@section style
+{
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/Content/Table/vendor/animate/animate.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/Content/Table/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/Content/Table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="~/Content/Table/css/util.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Table/css/main.css">
+<!--===============================================================================================-->
+}
+@{
+    ViewBag.Title = "Index";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+    string matricule = "";
+    int exercice = 0;
+    string value = "class=dd";
+    string message = "Selected ";
+    if (gs != null)
+    {
+        matricule = gs.matricule;
+        exercice = gs.exercice;
+    }
+
+}
+
+<h2>Select which company you want to work with </h2>
+<p>Or @Html.ActionLink("Add a new one", "index", "Excel") </p>
+
+<div class="limiter">
+    <div class="container-table100">
+        <div class="wrap-table100">
+            <div class="table">
+
+                <div class="row header">
+                    <div class="cell">
+                        @Html.DisplayNameFor(model => model.matricule)
+                    </div>
+                    <div class="cell">
+                        @Html.DisplayNameFor(model => model.exercice)
+                    </div>
+                    <div class="cell">
+                        @Html.DisplayNameFor(model => model.dateDebutExercice)
+                    </div>
+                    <div class="cell">
+                        @Html.DisplayNameFor(model => model.dateClotureExercice)
+                    </div>
+                    <div class="cell">
+                    </div>
+                </div>
+
+                @foreach (var item in Model)
+                {
+                    <div class="row" @{if ((matricule.Equals(item.matricule)) && (exercice == item.exercice)) { @value  }}>
+                        <div class="cell" data-title="matricule">
+                            @Html.DisplayFor(modelItem => item.matricule)
+                        </div>
+                        <div class="cell" data-title="exercice">
+                            @Html.DisplayFor(modelItem => item.exercice)
+                        </div>
+                        <div class="cell" data-title="date Debut Exercice">
+                            @item.dateDebutExercice.ToString("D")
+                        </div>
+                        <div class="cell" data-title="date Cloture Exercice">
+                            @item.dateClotureExercice.ToString("D")
+                        </div>
+                        <div class="cell" data-title="links">
+                            @{if ((matricule.Equals(item.matricule)) && (exercice == item.exercice))
+                                { @message }
+                            else
+                            {@Html.ActionLink("Select", "Select", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice }) }
+                            } |
+                            @Html.ActionLink("Details", "Details", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice, test = 1 }) |
+                            @Html.ActionLink("Delete", "Delete", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice })
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section script {
+<!--===============================================================================================-->
+<script src="~/Content/Table/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/Content/Table/vendor/bootstrap/js/popper.js"></script>
+<script src="~/Content/Table/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/Content/Table/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/Content/Table/js/main.js"></script>
+}

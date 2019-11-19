@@ -1,0 +1,101 @@
+﻿@model IEnumerable<TASEF.Models.ActifParamModel>
+@using TASEF.Models;
+@{
+    ViewBag.Title = "Notes - Passifs";
+    Layout = "~/Views/Shared/_pdfLayout.cshtml";
+    string value = "class=dd";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+    string exercice = gs.dateClotureExercice.ToString("dd/MM/yyyy");
+    string exercice1 = gs.dateClotureExercice.AddYears(-1).ToString("dd/MM/yyyy");
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Note
+        </th>
+        <th>
+           
+        </th>
+        <th>
+            
+        </th>
+        <th>
+            @exercice
+        </th>
+        <th>
+            @exercice1
+        </th>
+        <th>
+            Différence
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.type.Equals("Calculated"))
+        {
+        <tr>
+            <td>
+                @item.code
+            </td>
+            <td style="color:red">
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td></td>
+        </tr>
+
+            IEnumerable<PassifFormula> af = ViewBag.listFormula;
+            IEnumerable<PassifFormula> specificaf = af.Where(F => F.codeParam.Equals(item.code));
+
+            foreach (PassifFormula saf in specificaf)
+            {
+        <tr>
+            <td></td>
+            <td id="code">@saf.codeDonnee</td>
+            <td >@saf.nomCompte</td>
+            @{
+                float first = 0;
+                float second = 0;
+                float diff;
+                foreach (ExcelInfo aaf in ViewBag.firstFile)
+                {
+                    if (aaf.compte.StartsWith(saf.codeDonnee))
+                    {
+                        first += aaf.debit - aaf.credit;
+                    }
+                }
+                foreach (ExcelInfo aaaf in ViewBag.secondFile)
+                {
+
+                    if (aaaf.compte.StartsWith(saf.codeDonnee))
+                    {
+                        second += aaaf.debit - aaaf.credit;
+                    }
+                }
+            }
+            <td>@first</td>
+            <td>@second</td>
+            @{diff = first - second;}
+            <td>@diff</td>
+        </tr>
+            }
+        }
+
+    }
+
+</table>
+

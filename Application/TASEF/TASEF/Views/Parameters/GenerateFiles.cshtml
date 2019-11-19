@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Fichiers";
+}
+
+<h2>Génération des fichiers</h2>
+<div id="wrapper">
+    <div id="centerDiv">
+        @Html.ActionLink("Générer le fichier .pdf", "PrintActifsAsPdf", "Parameters", null, new { @class = "btn btn-default" })
+
+        @Html.ActionLink("Générer le fichier .xml", "PrintActifsAsXml", "Parameters", null, new { @class = "btn btn-default", id = "buttonMargin" })
+    </div>
+</div>

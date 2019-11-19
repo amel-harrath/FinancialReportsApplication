@@ -1,0 +1,158 @@
+﻿@model TASEF.Models.ActifFormula
+
+@{
+    ViewBag.Title = "Ajouter formule";
+}
+
+<h2>Ajouter formule</h2>
+@{
+    if (@ViewBag.listFormula != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.codeDonnee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nomCompte)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.typeFormule)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.genre)
+                </th>
+                <th id="smallParameterLinks"></th>
+            </tr>
+
+            @foreach (var item in @ViewBag.listFormula)
+            {
+                <tr>
+                    <td>
+                        @item.codeDonnee
+                    </td>
+                    <td>
+                        @item.nomCompte
+                    </td>
+                    <td>
+                        @{ if (@item.typeFormule.Equals("Solde"))
+                            {
+                                @("Solde")
+                            }
+                            else if (@item.typeFormule.Equals("MvtDebit"))
+                            { @("Mouvement Débiteur") }
+                        else if (@item.typeFormule.Equals("MvtCredit"))
+                        { @("Mouvement Créditeur") }
+                    else if (@item.typeFormule.Equals("SoldeSiD"))
+                    { @("Solde Si Débiteur") }
+                else if (@item.typeFormule.Equals("SoldeSiC"))
+                { @("Solde Si Créditeur") }
+                        }
+                    </td>
+                    <td>
+                        @{ if (@item.genre.Equals("Brut"))
+                            {
+                                @("Brut")
+                            }
+                            else if (@item.genre.Equals("Amor"))
+                            { @("Amortissements et provisions") }
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "EditFormula", new { id = item.Id }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    } }
+
+<button id="show" class="btn btn-default">Ajouter compte</button>
+
+@using (Html.BeginForm("Create", "Parameters", FormMethod.Post, new { @style = "display:none", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeParam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeParam, new { htmlAttributes = new { @class = "form-control", Value = Model.codeParam, type = "hidden" } })
+                @Html.EditorFor(model => model.codeParam, new { htmlAttributes = new { @class = "form-control", Value = Model.codeParam, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.codeParam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeDonnee, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeDonnee, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codeDonnee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomCompte, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomCompte, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomCompte, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typeFormule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("typeFormule", new List<SelectListItem>
+                                 { new SelectListItem { Text = "Solde", Value = "Solde", Selected=true},
+                                   new SelectListItem { Text = "Mouvement Débiteur", Value = "MvtDebit"},
+                                   new SelectListItem { Text = "Mouvement Créditeur", Value = "MvtCredit"},
+                                   new SelectListItem { Text = "Solde Si Débiteur", Value = "SoldeSiD"},
+                                   new SelectListItem { Text = "Solde Si Créditeur", Value = "SoldeSiC"}
+                                   }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.typeFormule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.genre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("genre", new List<SelectListItem>
+                                 { new SelectListItem { Text = "Brut", Value = "Brut", Selected=true},
+                                   new SelectListItem { Text = "Amortissements et provisions", Value = "Amor"}
+                                   }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.genre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <br />@Html.ActionLink("Retour", "Index", null, new { id = "brownLink" })
+</div>
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $("form").hide();
+            });
+            $("#show").click(function () {
+                $("form").show();
+            });
+        });
+    </script>
+
+}
+
+

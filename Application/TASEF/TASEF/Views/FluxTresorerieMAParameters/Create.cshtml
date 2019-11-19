@@ -1,0 +1,147 @@
+﻿@model TASEF.Models.FluxTresorerieMAFormula
+
+@{
+                /**/
+
+                ViewBag.Title = "Ajouter Formule";
+}
+
+<h2>Ajouter Formule</h2>
+@{
+    if (@ViewBag.listFormula != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.codeDonnee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nomCompte)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.typeFormule)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RANjournal)
+                </th>
+                <th id="smallParameterLinks"></th>
+            </tr>
+
+            @foreach (var item in @ViewBag.listFormula)
+            {
+                <tr>
+                    <td>
+                        @item.codeDonnee
+                    </td>
+                    <td>
+                        @item.nomCompte
+                    </td>
+                    <td>
+                        @item.typeFormule
+                    </td>
+                    <td>
+                        @{ if (@item.RANjournal.Equals("Tous"))
+                            { @("Tous les journaux") }
+                        else if (@item.RANjournal.Equals("RAN"))
+                        { @("Report a nouveau") }
+                        }
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "EditFormula", new { id = item.Id }) |
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    } }
+
+<button id="show" class="btn btn-default">Ajouter compte</button>
+
+@using (Html.BeginForm("Create", "FluxTresorerieMAParameters", FormMethod.Post, new { @style = "display:none", id = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Formule</h4>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeParam, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeParam, new { htmlAttributes = new { @class = "form-control", Value = Model.codeParam, type = "hidden" } })
+                @Html.EditorFor(model => model.codeParam, new { htmlAttributes = new { @class = "form-control", Value = Model.codeParam, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.codeParam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codeDonnee, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codeDonnee, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.codeDonnee, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomCompte, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomCompte, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nomCompte, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.typeFormule, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("typeFormule", new List<SelectListItem>
+                         { new SelectListItem { Text = "Solde", Value = "Solde", Selected=true},
+                           new SelectListItem { Text = "Mouvement Débiteur", Value = "MvtDebit"},
+                           new SelectListItem { Text = "Mouvement Créditeur", Value = "MvtCredit"},
+                           new SelectListItem { Text = "Solde Si Débiteur", Value = "SoldeSiD"},
+                           new SelectListItem { Text = "Solde Si Créditeur", Value = "SoldeSiC"}
+                           }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.typeFormule, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RANjournal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("RANjournal", new List<SelectListItem>
+                         { new SelectListItem { Text = "Tous les journaux", Value = "Tous", Selected=true},
+                           new SelectListItem { Text = "journale RAN", Value = "RAN"}
+                           }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RANjournal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Enregistrer" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <br />@Html.ActionLink("Retour", "Index", null, new { id = "brownLink" })
+</div>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#hide").click(function () {
+                $("form").hide();
+            });
+            $("#show").click(function () {
+                $("form").show();
+            });
+        });
+    </script>
+
+}

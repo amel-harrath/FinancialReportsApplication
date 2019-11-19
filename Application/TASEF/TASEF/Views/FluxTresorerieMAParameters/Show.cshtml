@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TASEF.Models.FluxTresorerieMAParamModel>
+
+@{
+    ViewBag.Title = "Détails paramétre";
+    List<string> minus = (List<string>)ViewBag.minus;
+    string value1 = "class=dd";
+    string value2 = "class=gg";
+}
+
+<h2>Liste des paramétres</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libelle)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.netN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.netN1)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr @{ if (minus.Contains(item.code)) { @value1  } else { @value2  }}>
+            <td>
+                @Html.DisplayFor(modelItem => item.code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libelle)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.netN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.netN1)
+            </td>
+        </tr>
+    }
+
+</table>

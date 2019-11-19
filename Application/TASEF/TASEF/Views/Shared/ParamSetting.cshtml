@@ -1,0 +1,23 @@
+﻿
+@{
+
+    ViewBag.Title = "Paramétrage";
+}
+
+<h2>Paramétrage</h2>
+<hr />
+<div id="wrapper">
+    <div id="centerDiv">
+        @Html.ActionLink("Choisir les paramétres par défauts", "SelectParameters", new { id = 1 }, new { @class = "btn btn-default" })
+
+        @Html.ActionLink("Dupliquer les paramétres d'une autre entreprise", "SelectParameters", new { id = 2 }, new { @class = "btn btn-default", id = "buttonMargin" })
+
+        @Html.ActionLink("Définir vos propres paramétres", "SelectParameters", new { id = 3 }, new { @class = "btn btn-default", id = "buttonMargin" })
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

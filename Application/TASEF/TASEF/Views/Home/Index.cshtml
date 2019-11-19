@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TASEF.Models.generalSettings>
+@using TASEF.Models
+
+@{
+    ViewBag.Title = "Entreprises";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+    string matricule = "";
+    int exercice = 0;
+    string value = "class=dd";
+    string message = "Selected ";
+    if (gs != null)
+    {
+        matricule = gs.matricule;
+        exercice = gs.exercice;
+    }
+
+}
+
+<h2>Sélectionner une entreprise !</h2>
+<p>ou @Html.ActionLink("Ajouter une nouvelle entreprise", "index", "Excel",null,new { @class= "btn btn-default" }) </p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.matricule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomEtPrenomRaisonSociale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exercice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateDebutExercice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateClotureExercice)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr @{if ((matricule.Equals(item.matricule)) && (exercice == item.exercice)) { @value  }}>
+        <td>
+            @Html.DisplayFor(modelItem => item.matricule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomEtPrenomRaisonSociale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exercice)
+        </td>
+        <td>
+            @item.dateDebutExercice.ToString("D")
+        </td>
+        <td>
+            @item.dateClotureExercice.ToString("D")
+        </td>
+        <td>
+            @{if ((matricule.Equals(item.matricule)) && (exercice == item.exercice))
+                { @message }
+            else
+            {@Html.ActionLink("Selectionner", "Select", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice }) }
+            } |
+            @Html.ActionLink("Détails", "Details", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice, test = 1 }) |
+            @Html.ActionLink("Supprimer", "Delete", new { ownerId = item.ownerId, matricule = item.matricule, exercice = item.exercice })
+
+        </td>
+    </tr>
+    }
+
+</table>

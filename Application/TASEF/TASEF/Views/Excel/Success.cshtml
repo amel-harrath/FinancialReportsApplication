@@ -1,0 +1,146 @@
+﻿@model IEnumerable<TASEF.Models.ExcelInfo>
+@using TASEF.Models;
+@{
+    ViewBag.Title = "Entreprise";
+    generalSettings gs = (generalSettings)Session["SteInformation"];
+}
+<h2> Entreprise</h2>
+<table class="table">
+    <tr>
+        <th>
+            Matricule
+        </th>
+        <th>
+            Nom et prénom raison sociale
+        </th>
+        <th>
+            Exercice
+        </th>
+        <th>
+            Date début exercice
+        </th>
+        <th>
+            date clotûre exercice
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>
+            @gs.matricule
+        </td>
+        <td>
+            @gs.nomEtPrenomRaisonSociale
+        </td>
+        <td>
+            @gs.exercice
+        </td>
+        <td>
+            @gs.dateDebutExercice.ToString("D")
+        </td>
+        <td>
+            @gs.dateClotureExercice.ToString("D")
+        </td>
+        <td>
+            @Html.ActionLink("Détails", "Details", "Home", new { ownerId = gs.ownerId, matricule = gs.matricule, exercice = gs.exercice, test = 2 }, null)
+
+        </td>
+    </tr>
+
+</table>
+<h2>Contenus des fichiers</h2>
+<div>
+    <h3 style="float:left">Fichier de la première période</h3>
+    <h3 style="float:right">
+        @{
+            int EmvId = ((ExcelModelView)Session["ExcelModelView"]).Id;
+        }
+        @Html.ActionLink("Impoter des nouveaux fichiers", "NewFiles", new { Id = EmvId }, new { @class = "btn btn-default" })
+    </h3>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.journal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateEcriture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.debit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.credit)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.journal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.compte)
+            </td>
+            <td>
+                @item.dateEcriture.ToString("D")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.debit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.credit)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h3>Fichier de la deuxième période</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.journal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.compte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateEcriture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.debit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.credit)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in @ViewBag.secondInputFile)
+    {
+        <tr>
+            <td>
+                @item.journal
+            </td>
+            <td>
+                @item.compte
+            </td>
+            <td>
+                @item.dateEcriture.ToString("D")
+            </td>
+            <td>
+                @item.debit
+            </td>
+            <td>
+                @item.credit
+            </td>
+        </tr>
+    }
+
+</table>
